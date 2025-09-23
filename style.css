@@ -124,3 +124,10 @@ footer {
     max-width: 300px;
   }
 }
+/* Social Icons */
+.social-icon {
+  width: 24px;       /* size of icon */
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px; /* space between icon and text */
+}
