@@ -131,3 +131,16 @@ footer {
   vertical-align: middle;
   margin-right: 8px; /* space between icon and text */
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  gap: 15px; /* space between logo and text */
+}
+
+.logo {
+  height: 60px;   /* adjust size */
+  width: auto;
+  border-radius: 50%; /* makes it circular if it’s square */
+}
