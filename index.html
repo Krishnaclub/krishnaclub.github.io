@@ -58,7 +58,7 @@ th{text-align:left;font-family:'Yatra One';font-weight:400;font-size:17px;color:
 td{padding:18px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 td.day b{font-family:'Yatra One';font-weight:400;font-size:20px;color:var(--saffron);display:block}
 td.day span{color:var(--muted);font-size:14px}
-td.ev{font-weight:600;font-size:18px;min-width:170px}
+td.ev{font-weight:600;font-size:18px}
 .cast{list-style:none;font-size:15.5px}
 .cast li{padding:2px 0}
 .cast .role{color:var(--muted)}
@@ -66,6 +66,16 @@ td.ev{font-weight:600;font-size:18px;min-width:170px}
 .thumbs{display:flex;gap:6px;flex-wrap:wrap}
 .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:1px solid var(--line)}
 .soon{color:#b9a58c;font-style:italic;font-size:15px}
+
+
+/* cast */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.role-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--saffron);border-radius:10px;padding:12px 16px}
+.role-card span{display:block;font-family:'Yatra One';color:var(--maroon2);font-size:19px}
+.role-card b{font-weight:500}
+.role-card i{color:#b9a58c;font-weight:400}
+.alt{background:#fff;border-top:1px solid var(--line)}
+td.ev small{display:block;font-weight:400;color:var(--muted);font-size:15px}
 
 /* gallery */
 .grid{columns:3 220px;column-gap:14px}
@@ -105,6 +115,7 @@ footer{background:#220509;color:#cdb592;text-align:center;padding:26px 22px;font
   <ul>
    <li><a href="#about">About</a></li>
    <li><a href="#schedule">Schedule</a></li>
+   <li><a href="#cast">Cast</a></li>
    <li><a href="#gallery">Gallery</a></li>
    <li><a href="#contact">Contact</a></li>
    <li><a class="cta-nav" href="#donate">Donate</a></li>
@@ -140,15 +151,23 @@ footer{background:#220509;color:#cdb592;text-align:center;padding:26px 22px;font
 <section class="sched" id="schedule">
  <div class="wrap">
   <h2 class="title">Ramleela 2026 schedule</h2>
-  <p class="lead">Day by day events, who plays which part, and photos from each night.</p>
+  <p class="lead">What happens on each night of the Ramleela.</p>
   <table>
-   <thead><tr><th>Day</th><th>Event</th><th>Cast</th><th>Photos</th></tr></thead>
+   <thead><tr><th>Day</th><th>Event</th></tr></thead>
    <tbody id="rows"></tbody>
   </table>
  </div>
 </section>
 
-<section id="gallery">
+<section id="cast">
+ <div class="wrap">
+  <h2 class="title">Cast</h2>
+  <p class="lead">The people who bring each part to life this year.</p>
+  <div class="roles" id="roles"></div>
+ </div>
+</section>
+
+<section class="alt" id="gallery">
  <div class="wrap">
   <h2 class="title">Gallery</h2>
   <p class="lead">Moments from our past Ramleelas. Tap a photo to see it larger.</p>
@@ -185,60 +204,70 @@ footer{background:#220509;color:#cdb592;text-align:center;padding:26px 22px;font
 
 <script>
 /* ============ EDIT HERE ============
-   SCHEDULE: one block per day.
-   day    : label shown in first column
-   date   : change "Date to be announced" to the real date, e.g. "12 October"
-   event  : name of that night's event
-   cast   : list of [ "Part", "Person" ]. Leave "" for the person to show "Add name"
-   photos : list of image paths, e.g. ["images/day1-a.jpg", "images/day1-b.jpg"]
+   SCHEDULE: one line per day. event is "English | Hindi".
    ================================== */
 const SCHEDULE = [
- {day:"Day 1", date:"7-10-2026", event:"Shravan Lila | श्रवण लीला",
-  photos:[]},
- {day:"Day 2", date:"8-10-2026", event:"Tadka Vadh | तड़का वध",
-  photos:[]},
- {day:"Day 3", date:"9-10-2026", event:"Sita Swembar | सीता स्वयंवर",
- photos:[]},
- {day:"Day 4", date:"10-10-2026", event:"Banwas | वनवास",
- photos:[]},
- {day:"Day 5", date:"11-10-2026", event:"Dashrath Maran| दशरथ मरण",
-  photos:[]},
- {day:"Day 6", date:"12-10-2026", event:"Bharat Milap | भरत मिलाप",
- photos:[]},
- {day:"Day 7", date:"13-10-2026", event:"Cutting off Shurpanakha's nose | सूर्पनखा की नाक काटना",
- photos:[]},
- {day:"Day 8", date:"14-10-2026", event:"Sita Haran evam Hanuman Jhaki | सीता हरण एवं हनुमान झाकी",
- photos:[]},
- {day:"Day 9", date:"15-10-2026", event:"Bali Vadh | बाली वध",
- photos:[]},
- {day:"Day 10", date:"16-10-2026", event:"Lanka Dehan | लंका दहन",
- photos:[]}
- {day:"Day 1", date:"17-10-2026", event:"Lakshman Murcha | लक्ष्मण मूर्छाा",
-  photos:[]},
- {day:"Day 1", date:"18-10-2026", event:"Meghnad Kumbhkaran Vadh| मेघनाद कुम्भकर्ण वध",
-  photos:[]},
- {day:"Day 1", date:"19-10-2026", event:"Ahiravan evam Ravan Vadh | अहिरावण एवं रावण वध",
-  photos:[]},
- {day:"Day 1", date:"20-10-2026", event:"Dusshera | दशहरा",
-  photos:[]},
+ {day:"Day 1", date:"7-10-2026", event:"Shravan Lila | श्रवण लीला"},
+ {day:"Day 2", date:"8-10-2026", event:"Tadka Vadh | तड़का वध"},
+ {day:"Day 3", date:"9-10-2026", event:"Sita Swayamvar | सीता स्वयंवर"},
+ {day:"Day 4", date:"10-10-2026", event:"Banwas | वनवास"},
+ {day:"Day 5", date:"11-10-2026", event:"Dashrath Maran | दशरथ मरण"},
+ {day:"Day 6", date:"12-10-2026", event:"Bharat Milap | भरत मिलाप"},
+ {day:"Day 7", date:"13-10-2026", event:"Cutting off Shurpanakha's nose | सूर्पनखा की नाक काटना"},
+ {day:"Day 8", date:"14-10-2026", event:"Sita Haran evam Hanuman Jhaki | सीता हरण एवं हनुमान झाकी"},
+ {day:"Day 9", date:"15-10-2026", event:"Bali Vadh | बाली वध"},
+ {day:"Day 10", date:"16-10-2026", event:"Lanka Dahan | लंका दहन"},
+ {day:"Day 11", date:"17-10-2026", event:"Lakshman Murcha | लक्ष्मण मूर्छा"},
+ {day:"Day 12", date:"18-10-2026", event:"Meghnad Kumbhkaran Vadh | मेघनाद कुम्भकर्ण वध"},
+ {day:"Day 13", date:"19-10-2026", event:"Ahiravan evam Ravan Vadh | अहिरावण एवं रावण वध"},
+ {day:"Day 14", date:"20-10-2026", event:"Dussehra | दशहरा"}
+];
+
+/* CAST: [ "Part", "Person" ]. Put the name in the second quotes, e.g. ["Ram", "Rohit"].
+   Add or delete lines to change the list. */
+const CAST = [
+ ["Ram",""],
+ ["Lakshman",""],
+ ["Sita",""],
+ ["Hanuman",""],
+ ["Ravan",""],
+ ["Bharat",""],
+ ["Shatrughan",""],
+ ["Raja Dashrath",""],
+ ["Kaushalya",""],
+ ["Kaikeyi",""],
+ ["Sumitra",""],
+ ["Vishwamitra",""],
+ ["Raja Janak",""],
+ ["Sugriv",""],
+ ["Bali",""],
+ ["Angad",""],
+ ["Vibhishan",""],
+ ["Kumbhkaran",""],
+ ["Meghnad",""],
+ ["Jatayu",""],
+ ["Shurpanakha",""],
+ ["Maricha",""],
+ ["Jambavan",""],
+ ["Narad",""]
 ];
 
 /* GALLERY: add or remove file names from this list */
-const GALLERY = ["pic1.jpg","pic2.jpg","pic3.jpg","pic4.jpg","pic5.jpg","pic7.jpg","pic8.jpg","pic9.jpg","pic10.jpg","pic11.jpg","pic12.jpg","pic13.jpg","pic15.jpg","pic16.jpeg","pic17.jpeg","pic18.jpeg","pic19.jpeg","pic20.jpeg"];
+const GALLERY = ["pic1.jpg","pic3.jpg","pic4.jpg","pic5.jpg","pic7.jpg","pic8.jpg","pic9.jpg","pic10.jpg","pic11.jpg","pic12.jpg","pic13.jpg","pic15.jpg","hanuman.JPG","ravan2025.jpeg","hanumannn.jpeg","clubnews.jpeg","krishnaclub.jpeg"];
 /* ============ END EDIT ============ */
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+const parts = t => { const [en, hi] = t.split('|').map(x => x.trim()); return esc(en) + (hi ? `<small>${esc(hi)}</small>` : ''); };
+
 document.getElementById('rows').innerHTML = SCHEDULE.map(d => `
  <tr>
   <td class="day" data-l="Day"><b>${esc(d.day)}</b><span>${esc(d.date)}</span></td>
-  <td class="ev" data-l="Event">${esc(d.event)}</td>
-  <td data-l="Cast"><ul class="cast">${d.cast.map(([r,p]) =>
-    `<li><span class="role">${esc(r)}:</span> ${p ? esc(p) : '<span class="todo">Add name</span>'}</li>`).join('')}</ul></td>
-  <td data-l="Photos">${d.photos.length
-    ? `<div class="thumbs">${d.photos.map(p => `<img src="${esc(p)}" alt="${esc(d.event)}" loading="lazy">`).join('')}</div>`
-    : '<span class="soon">Photos coming soon</span>'}</td>
+  <td class="ev" data-l="Event">${parts(d.event)}</td>
  </tr>`).join('');
+
+document.getElementById('roles').innerHTML = CAST.map(([r,p]) => `
+ <div class="role-card"><span>${esc(r)}</span><b>${p ? esc(p) : '<i>Add name</i>'}</b></div>`).join('');
 
 document.getElementById('grid').innerHTML = GALLERY.map(f =>
   `<img src="images/${esc(f)}" alt="Ramleela photo" loading="lazy">`).join('');
@@ -251,4 +280,3 @@ document.addEventListener('click', e => {
 </script>
 </body>
 </html>
-
