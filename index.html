@@ -1,112 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHREE KRISHNA DRAMATIC CLUB , MULLANA</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shree Krishna Dramatic Club, Mullana | Ramleela 2026</title>
+<meta name="description" content="Ramleela 2026 by Shree Krishna Dramatic Club, Mullana. Performing since 1928.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#3a0c12;--maroon2:#561820;--marigold:#f4a81d;--saffron:#e0560f;--paper:#fbf3e3;--ink:#2a1a14;--line:#e6d6b8;--muted:#8a7762}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Hind',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Yatra One','Hind',serif;font-weight:400;line-height:1.15}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(58,12,18,.94);backdrop-filter:blur(8px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:'Yatra One';font-size:18px}
+.brand img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+nav ul{display:flex;gap:22px;list-style:none}
+nav ul a{color:#f1dfc0;text-decoration:none;font-size:15px;font-weight:500}
+nav ul a:hover{color:var(--marigold)}
+.cta-nav{background:var(--marigold);color:var(--maroon)!important;padding:6px 14px;border-radius:99px;font-weight:600}
+
+/* hero */
+.hero{background:radial-gradient(900px 420px at 85% 10%,#7a2230 0%,transparent 70%),var(--maroon);color:#fff;padding:90px 0 80px;position:relative;overflow:hidden}
+.hero .wrap{position:relative}
+.hero small{display:block;color:var(--marigold);font-size:18px;font-weight:500;margin-bottom:10px}
+.hero h1{font-size:clamp(56px,13vw,150px);color:var(--marigold);letter-spacing:.01em}
+.hero h1 span{display:block;font-size:.34em;color:#fff;margin-top:14px}
+.hero p{max-width:520px;margin:22px 0 30px;color:#ecd9bb;font-size:19px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:99px;font-weight:600;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--marigold);color:var(--maroon)}
+.btn.ghost{border:2px solid #e9c98f;color:#fff}
+.hero .logo{position:absolute;right:22px;bottom:-30px;width:min(34vw,300px);opacity:.16;filter:grayscale(1) brightness(2)}
+
+/* sections */
+section{padding:76px 0}
+.title{font-size:clamp(32px,5vw,48px);margin-bottom:12px}
+.lead{max-width:640px;color:#5a4636;margin-bottom:34px}
+.facts{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+.fact{border-left:4px solid var(--saffron);padding:4px 16px}
+.fact b{font-family:'Yatra One';font-weight:400;font-size:32px;display:block;color:var(--maroon2)}
+.fact span{color:var(--muted);font-size:15px}
+
+/* schedule */
+.sched{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-family:'Yatra One';font-weight:400;font-size:17px;color:var(--maroon2);padding:10px 14px;border-bottom:3px solid var(--marigold)}
+td{padding:18px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+td.day b{font-family:'Yatra One';font-weight:400;font-size:20px;color:var(--saffron);display:block}
+td.day span{color:var(--muted);font-size:14px}
+td.ev{font-weight:600;font-size:18px;min-width:170px}
+.cast{list-style:none;font-size:15.5px}
+.cast li{padding:2px 0}
+.cast .role{color:var(--muted)}
+.cast .todo{color:#b9a58c;font-style:italic}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap}
+.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:1px solid var(--line)}
+.soon{color:#b9a58c;font-style:italic;font-size:15px}
+
+/* gallery */
+.grid{columns:3 220px;column-gap:14px}
+.grid img{width:100%;margin-bottom:14px;border-radius:10px;display:block;cursor:pointer;break-inside:avoid}
+dialog{border:0;background:transparent;max-width:92vw;max-height:92vh;margin:auto}
+dialog::backdrop{background:rgba(20,5,8,.88)}
+dialog img{max-width:92vw;max-height:88vh;border-radius:10px;display:block}
+
+/* donate / contact */
+.donate{background:var(--maroon);color:#fff}
+.donate .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.donate .lead{color:#e8d3b3;margin-bottom:22px}
+.qr{width:200px;border-radius:14px;background:#fff;padding:10px}
+.contact .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.chip{display:flex;align-items:center;gap:10px;padding:10px 18px;border:2px solid var(--line);border-radius:99px;text-decoration:none;font-weight:600;background:#fff}
+.chip img{width:24px;height:24px}
+.chip:hover{border-color:var(--saffron)}
+footer{background:#220509;color:#cdb592;text-align:center;padding:26px 22px;font-size:15px}
+
+@media(max-width:760px){
+ nav ul li:not(:last-child){display:none}
+ .donate .wrap{grid-template-columns:1fr}
+ table,tbody,tr,td{display:block}
+ thead{display:none}
+ tr{border:1px solid var(--line);border-radius:14px;padding:12px 6px;margin-bottom:16px;background:var(--paper)}
+ td{border:0;padding:8px 14px}
+ td[data-l]::before{content:attr(data-l);display:block;font-family:'Yatra One';color:var(--maroon2);font-size:14px;margin-bottom:2px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-    <img src="images/logo.png" alt="Club Logo" class="logo">
-    <h1>SHREE KRISHNA DRAMATIC CLUB , MULLANA</h1>
-    <p>Since 1928</p>
-  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#schedule">Schedule</a>
-    <a href="#gallery">Gallery</a>  
-    <a href="#donate">Donate</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+ <div class="wrap">
+  <a class="brand" href="#top"><img src="images/logo.png" alt="Club logo" onerror="this.style.display='none'">Shree Krishna Dramatic Club</a>
+  <ul>
+   <li><a href="#about">About</a></li>
+   <li><a href="#schedule">Schedule</a></li>
+   <li><a href="#gallery">Gallery</a></li>
+   <li><a href="#contact">Contact</a></li>
+   <li><a class="cta-nav" href="#donate">Donate</a></li>
+  </ul>
+ </div>
+</nav>
 
-  <main>
-    <section id="about">
-      <h2>About Us</h2>
-      <p>Welcome to the official website of <b>Shree Krishna Dramatic Club, Mullana</b>. 
-         Since 1928, we have been bringing the story of Lord Ram to life every year 
-         through our grand Ramleela performance.</p>
-    </section>
+<header class="hero" id="top">
+ <div class="wrap">
+  <small>Shree Krishna Dramatic Club, Mullana</small>
+  <h1>रामलीला<span>Ramleela 2026 &nbsp;|&nbsp; October 2026</span></h1>
+  <p>Ninety eight years of the story of Lord Ram, performed live by our own people, on our own stage. Join us this October.</p>
+  <div class="btns">
+   <a class="btn main" href="#schedule">See the schedule</a>
+   <a class="btn ghost" href="#donate">Support the club</a>
+  </div>
+ </div>
+ <img class="logo" src="images/logo.png" alt="" onerror="this.style.display='none'">
+</header>
 
-   <section id="schedule">
-      <h2>Ramleela 2026 Schedule</h2>
-      <p><i>We will return in October 2026 with a bigger show, Thank you so much for attending our 2025 festivities, Happy Diwali and Jai Shree Ram!</p>
-      
-    </section>
-
-    
-    
-    <!-- Gallery Section -->
-<h2 style="text-align:center; margin-top: 40px;">Gallery</h2>
-<div class="gallery">
-  <img src="images/pic1.jpg" alt="Picture 1">
-  
-  <img src="images/pic3.jpg" alt="Picture 3">
-  <img src="images/pic4.jpg" alt="Picture 4">
-  <img src="images/pic5.jpg" alt="Picture 5">
-  
-  <img src="images/pic7.jpg" alt="Picture 1">
-  <img src="images/pic8.jpg" alt="Picture 1">
-  <img src="images/pic9.jpg" alt="Picture 1">
-  <img src="images/pic10.jpg" alt="Picture 1">
-  <img src="images/pic11.jpg" alt="Picture 1">
-  <img src="images/pic12.jpg" alt="Picture 1">
-  <img src="images/pic13.jpg" alt="Picture 1">
-  
-  <img src="images/pic15.jpg" alt="Picture 1">
-  <img src="images/hanuman.JPG" alt="Picture 1">
-
-  <img src="images/ravan2025.jpeg" alt="Picture 3">
-  <img src="images/hanumannn.jpeg" alt="Picture 3">
-  <img src="images/clubnews.jpeg" alt="Picture 3">
-  <img src="images/krishnaclub.jpeg" alt="Picture 3">
-  <!-- Add more images as needed -->
-</div>
-    
-
-    
-
-    <section id="donate">
-      <h2>Support Us</h2>
-      <p>Your donations help us keep this 97-year-old tradition alive!</p>
-      <img src="images/upi-qr.jpg" alt="UPI QR Code" class="qr">
-      <p><a href="https://krishnaclub.github.io/images/upi-qr.jpg" target="_blank" class="donate-btn">Donate Online</a></p>
-    </section>
-
-    <section id="contact">
-  <h2>Stay Connected</h2>
-  <p>Follow us on:</p>
-  <p>
-    <a href="https://www.instagram.com/shree_krishna_dramatic_club" target="_blank">
-      <img src="images/instagram.png" alt="Instagram" class="social-icon">
-    </a>||
-    <a href="https://www.facebook.com/shreekrishnadramaticclubmullana?mibextid=wwXIfr&rdid=huVhwPvjoVocONJq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17EG9x8siY%2F%3Fmibextid%3DwwXIfr" target="_blank">
-      <img src="images/facebook.png" alt="Facebook" class="social-icon">
-    </a>||
-    <a href="https://www.youtube.com/@Shri_krishna_dramatic_club" target="_blank">
-      <img src="images/youtube.png" alt="Youtube" class="social-icon">
-    </a>
-  </p>
+<section id="about">
+ <div class="wrap">
+  <h2 class="title">About us</h2>
+  <p class="lead">Shree Krishna Dramatic Club, Mullana has staged the Ramleela every year since 1928. What started as a few neighbours telling a story has become the festival the whole town waits for.</p>
+  <div class="facts">
+   <div class="fact"><b>1928</b><span>Our first Ramleela</span></div>
+   <div class="fact"><b>98</b><span>Years of performances</span></div>
+   <div class="fact"><b>2026</b><span>This year's show</span></div>
+  </div>
+ </div>
 </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Shree Krishna Dramatic Club, Mullana. All Rights Reserved.</p>
+<section class="sched" id="schedule">
+ <div class="wrap">
+  <h2 class="title">Ramleela 2026 schedule</h2>
+  <p class="lead">Day by day events, who plays which part, and photos from each night.</p>
+  <table>
+   <thead><tr><th>Day</th><th>Event</th><th>Cast</th><th>Photos</th></tr></thead>
+   <tbody id="rows"></tbody>
+  </table>
+ </div>
+</section>
 
-    <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+<section id="gallery">
+ <div class="wrap">
+  <h2 class="title">Gallery</h2>
+  <p class="lead">Moments from our past Ramleelas. Tap a photo to see it larger.</p>
+  <div class="grid" id="grid"></div>
+ </div>
+</section>
 
-            <div class="contact-info">
-              <p class="contact-title">Mail us at:</p>
+<section class="donate" id="donate">
+ <div class="wrap">
+  <div>
+   <h2 class="title">Support us</h2>
+   <p class="lead">Your donations keep this 98 year old tradition alive. Scan the QR code with any UPI app.</p>
+   <a class="btn main" href="images/upi-qr.jpg">Open QR code</a>
+  </div>
+  <img class="qr" src="images/upi-qr.jpg" alt="UPI QR code for donations">
+ </div>
+</section>
 
-              <a href="mailto:shrikrishnadramaticclub@yahoo.com" class="contact-link">shrikrishnadramaticclub@yahoo.com</a>
-            </div>
+<section class="contact" id="contact">
+ <div class="wrap">
+  <h2 class="title">Stay connected</h2>
+  <p class="lead">Follow us for updates, or write to us at <a href="mailto:shrikrishnadramaticclub@yahoo.com"><b>shrikrishnadramaticclub@yahoo.com</b></a></p>
+  <div class="row">
+   <a class="chip" href="https://www.instagram.com/shree_krishna_dramatic_club"><img src="images/instagram.png" alt="">Instagram</a>
+   <a class="chip" href="https://www.facebook.com/shreekrishnadramaticclubmullana"><img src="images/facebook.png" alt="">Facebook</a>
+   <a class="chip" href="https://www.youtube.com/@Shri_krishna_dramatic_club"><img src="images/youtube.png" alt="">YouTube</a>
+  </div>
+ </div>
+</section>
 
-  </footer>
+<footer>© 2026 Shree Krishna Dramatic Club, Mullana. All rights reserved. Jai Shree Ram!</footer>
 
-  <script src="script.js"></script>
+<dialog id="box"><img id="big" alt=""></dialog>
+
+<script>
+/* ============ EDIT HERE ============
+   SCHEDULE: one block per day.
+   day    : label shown in first column
+   date   : change "Date to be announced" to the real date, e.g. "12 October"
+   event  : name of that night's event
+   cast   : list of [ "Part", "Person" ]. Leave "" for the person to show "Add name"
+   photos : list of image paths, e.g. ["images/day1-a.jpg", "images/day1-b.jpg"]
+   ================================== */
+const SCHEDULE = [
+ {day:"Day 1", date:"Date to be announced", event:"Ram Janam and Tadka Vadh",
+  cast:[["Ram",""],["Lakshman",""],["Vishwamitra",""],["Tadka",""]], photos:[]},
+ {day:"Day 2", date:"Date to be announced", event:"Sita Swayamvar",
+  cast:[["Ram",""],["Sita",""],["Raja Janak",""],["Parshuram",""]], photos:[]},
+ {day:"Day 3", date:"Date to be announced", event:"Ram Vivah",
+  cast:[["Ram",""],["Sita",""],["Raja Dashrath",""]], photos:[]},
+ {day:"Day 4", date:"Date to be announced", event:"Kaikeyi Vardaan and Vanvaas",
+  cast:[["Kaikeyi",""],["Manthara",""],["Raja Dashrath",""],["Ram",""]], photos:[]},
+ {day:"Day 5", date:"Date to be announced", event:"Kevat Samvad and Bharat Milap",
+  cast:[["Kevat",""],["Bharat",""],["Ram",""]], photos:[]},
+ {day:"Day 6", date:"Date to be announced", event:"Sita Haran",
+  cast:[["Ravan",""],["Maricha",""],["Jatayu",""],["Sita",""]], photos:[]},
+ {day:"Day 7", date:"Date to be announced", event:"Hanuman Milan and Lanka Dahan",
+  cast:[["Hanuman",""],["Sugriv",""],["Ravan",""]], photos:[]},
+ {day:"Day 8", date:"Date to be announced", event:"Angad Ravan Samvad",
+  cast:[["Angad",""],["Ravan",""],["Vibhishan",""]], photos:[]},
+ {day:"Day 9", date:"Date to be announced", event:"Kumbhkaran and Meghnad Vadh",
+  cast:[["Kumbhkaran",""],["Meghnad",""],["Lakshman",""]], photos:[]},
+ {day:"Day 10", date:"Date to be announced", event:"Ravan Vadh and Ram Rajyabhishek",
+  cast:[["Ram",""],["Ravan",""],["Hanuman",""]], photos:[]}
+];
+
+/* GALLERY: add or remove file names from this list */
+const GALLERY = ["pic1.jpg","pic3.jpg","pic4.jpg","pic5.jpg","pic7.jpg","pic8.jpg","pic9.jpg","pic10.jpg","pic11.jpg","pic12.jpg","pic13.jpg","pic15.jpg","hanuman.JPG","ravan2025.jpeg","hanumannn.jpeg","clubnews.jpeg","krishnaclub.jpeg"];
+/* ============ END EDIT ============ */
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+document.getElementById('rows').innerHTML = SCHEDULE.map(d => `
+ <tr>
+  <td class="day" data-l="Day"><b>${esc(d.day)}</b><span>${esc(d.date)}</span></td>
+  <td class="ev" data-l="Event">${esc(d.event)}</td>
+  <td data-l="Cast"><ul class="cast">${d.cast.map(([r,p]) =>
+    `<li><span class="role">${esc(r)}:</span> ${p ? esc(p) : '<span class="todo">Add name</span>'}</li>`).join('')}</ul></td>
+  <td data-l="Photos">${d.photos.length
+    ? `<div class="thumbs">${d.photos.map(p => `<img src="${esc(p)}" alt="${esc(d.event)}" loading="lazy">`).join('')}</div>`
+    : '<span class="soon">Photos coming soon</span>'}</td>
+ </tr>`).join('');
+
+document.getElementById('grid').innerHTML = GALLERY.map(f =>
+  `<img src="images/${esc(f)}" alt="Ramleela photo" loading="lazy">`).join('');
+
+const box = document.getElementById('box'), big = document.getElementById('big');
+document.addEventListener('click', e => {
+  if (e.target.matches('.grid img, .thumbs img')) { big.src = e.target.src; box.showModal(); }
+  else if (e.target === box || e.target === big) box.close();
+});
+</script>
 </body>
 </html>
+
